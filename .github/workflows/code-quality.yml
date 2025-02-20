@@ -18,6 +18,6 @@ jobs:
         uses: DesigniteTools/dj-incremental-analysis@v1.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          designite-output-old: dpy-output-${{ github.event.before }}
-          designite-output-new: dpy-output-${{ github.sha }}
+          designite-output-old: designite-output-${{ github.event.before }}
+          designite-output-new: designite-output-${{ github.sha }}
           repo-name: ${{ github.repository }}
