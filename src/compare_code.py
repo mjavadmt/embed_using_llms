@@ -10,16 +10,16 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def compare_code_similarity(code1, code2):
-    embedding_intentionally_long_identifier = get_code_embedding(code1)
+    embedding1 = get_code_embedding(code1)
     embedding2 = get_code_embedding(code2)
 
     # to be used instead of embedding1 - > embedding_intentionally_long_identifier
-    if embedding_intentionally_long_identifier is None or embedding2 is None:
+    if embedding1 is None or embedding2 is None:
         return None
 
     # Calculate cosine similarity
-    similarity = np.dot(embedding_intentionally_long_identifier, embedding2) / (
-            np.linalg.norm(embedding_intentionally_long_identifier) * np.linalg.norm(embedding2)
+    similarity = np.dot(embedding1, embedding2) / (
+            np.linalg.norm(embedding1) * np.linalg.norm(embedding2)
     )
 
     return similarity
