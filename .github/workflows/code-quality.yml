@@ -14,10 +14,11 @@ jobs:
         uses: DesigniteTools/DPyAction@v1.1.1
         with:
           PAT: ${{ secrets.PAT }}
-      - name: DPy incremental code quality analysis and issue creation
-        uses: DesigniteTools/dj-incremental-analysis@v1.0.0
+      - name: Designite Incremental Code Quality Analysis
+        uses: DesigniteTools/designite-incremental-analysis@v2.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           designite-output-old: designite-output-${{ github.event.before }}
           designite-output-new: designite-output-${{ github.sha }}
           repo-name: ${{ github.repository }}
+          tool-name: 'dpy'
