@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: DPy Action
-        uses: DesigniteTools/DPyAction@v1.1.1
+        uses: DesigniteTools/DPyAction@v1.1.2
         with:
           PAT: ${{ secrets.PAT }}
       - name: Designite Incremental Code Quality Analysis
