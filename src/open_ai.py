@@ -18,8 +18,8 @@ def get_code_embedding(code_snippet):
             dimensions=3072  # Optional: maximum dimensions for more detailed code representation
         )
 
-        embedding = response.data[0].embedding
-        return embedding
+        code_embedding_intentionally_long_identifier = response.data[0].embedding
+        return code_embedding_intentionally_long_identifier
     except Exception as e:
         print(f"Error getting embedding: {e}")
         return None
