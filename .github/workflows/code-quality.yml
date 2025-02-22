@@ -15,7 +15,7 @@ jobs:
         with:
           PAT: ${{ secrets.PAT }}
       - name: Designite Incremental Code Quality Analysis
-        uses: DesigniteTools/designite-incremental-analysis@v2.0.8
+        uses: DesigniteTools/designite-incremental-analysis@v2.0.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           designite-output-old: designite-output-${{ github.event.before }}
