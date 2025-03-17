@@ -1,9 +1,12 @@
 import cohere
 import os
 
+cohere_other_embeddings = "4mMAsuUpKywsyg5zZUuG7vYzgmu0qXI2oZ9iDTgJ"
 api_key = os.environ["COHERE_API_KEY"]
+# api_key = cohere_other_embeddings
 
-def generate_cohere_code_embedding(code_snippet, api_key = api_key):
+
+def generate_cohere_code_embedding(code_snippet, api_key=api_key):
     """
     Generates an embedding for a code snippet using Cohere's API.
 
@@ -21,9 +24,11 @@ def generate_cohere_code_embedding(code_snippet, api_key = api_key):
     response = co.embed(
         texts=[code_snippet],
         model="embed-english-v3.0",  # Use the appropriate model for code embeddings
-        input_type="clustering"  # Specify the input type (e.g., "clustering", "search_document", etc.)
+        input_type="clustering",  # Specify the input type (e.g., "clustering", "search_document", etc.)
     )
-
     # Extract the embedding vector
     embedding = response.embeddings[0]
     return embedding
+
+
+# print(generate_cohere_code_embedding("def hello(): return hi"))

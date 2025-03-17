@@ -46,7 +46,7 @@ if __name__ == '__main__':
     method = EMBEDDINGS_METHODS[args.method]
 
     all_embeddings = {}
-    for folder_name, folder_path in folders.items():
+    for fname in os.listdir("data"):
         print(f"Generating embeddings for files in {folder_name}:")
         file_contents = read_files_from_folder(folder_path)
         if args.method == 'hf':
@@ -54,10 +54,12 @@ if __name__ == '__main__':
         else:
             embeddings = generate_embeddings(file_contents, method)
         all_embeddings.update(embeddings)
-
+    
     file_names, similarity_matrix = compute_pairwise_similarity(all_embeddings)
     print("Pairwise Similarity Matrix:")
-    print(similarity_matrix.to_string(float_format="%.3f"))
+    print(similarity_matrix.to_string(float_format=lambda x: f"{x:.3f}"))
     # Plot visualization
     plot_fn = plot_tsne if args.plot_type == 'tsne' else plot_pca
     plot_fn(all_embeddings, file_names, args.method)
+
+
